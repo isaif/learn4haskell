@@ -188,7 +188,7 @@ to guess first, what you will see.
 >>> [10, 2] ++ [3, 1, 5]
 [10,2,3,1,5]
 >>> [] ++ [1, 4]  -- [] is an empty list
-[1, 4]
+[1,4]
 >>> 3 : [1, 2]
 [3,1,2]
 >>> 4 : 2 : [5, 10]  -- prepend multiple elements
