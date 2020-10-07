@@ -544,9 +544,9 @@ Casual reminder about adding top-level type signatures for all functions :)
 -}
 mid :: Int -> Int -> Int -> Int
 mid x y z 
-    | x < y && x > z = x
-    | y < x && y > z = y
-    | z < x && z > y = z
+    | (x <= y && x >= z) || (x >= y && x <= z) = x
+    | (y <= x && y >= z) || (y >= x && y <= z)= y
+    | (z <= x && z >= y) || (z >= x && z <= y) = z
     | otherwise = z
 
 {- |
@@ -651,8 +651,12 @@ Implement a function that returns the first digit of a given number.
 You need to use recursion in this task. Feel free to return to it later, if you
 aren't ready for this boss yet!
 -}
-
-firstDigit n = error "firstDigit: Not implemented!"
+firstDigit :: Int -> Int
+firstDigit n = go (divMod (abs n) 10)
+    where
+        go:: (Int, Int) -> Int
+        go (0, firstD) = firstD
+        go (x, _) = go (divMod x 10)
 
 
 {-
